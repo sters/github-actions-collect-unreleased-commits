@@ -16,10 +16,10 @@ inputs:
     default: '%s'
 
 outputs:
-  latest-release:
-    description: 'The latest release version.'
+  latest-tag:
+    description: 'The latest tag.'
   commits:
-    description: 'The unreleased commit list'
+    description: 'The unreleased commit list.'
 
 runs:
   using: 'node12'

@@ -58,7 +58,7 @@ const run = async (cmd, args, cwd) => {
   return data;
 }
 
-const getLatestReleaseTag = async (workspace) => {
+const getLatestTag = async (workspace) => {
   const cmd = `git`;
   const args = ['log', `--format=%D`, '--decorate-refs=tags'];
   const result = await run(cmd, args, workspace);
@@ -69,9 +69,10 @@ const getLatestReleaseTag = async (workspace) => {
   return m[0][1];
 };
 
-const getCommits = async (workspace, format, mode) => {
+const getCommits = async (workspace, format, mode, latestTag) => {
   const cmd = `git`;
-  const args = ['log', `--format={{filter:%B}}${format}//`];
+  const range = latestTag === '' ? 'HEAD' : `${latestTag}..HEAD`;
+  const args = ['log', range, `--format={{filter:%B}}${format}//`];
   const result = await run(cmd, args, workspace);
 
   return result.split('//\n').filter((s) => {
@@ -93,13 +94,15 @@ const getCommits = async (workspace, format, mode) => {
 const main = async () => {
   const inputs = parseInputs();
 
+  const latestTag = await getLatestTag(inputs.workspace);
   setOutput(
-    'latest-release',
-    await getLatestReleaseTag(inputs.workspace),
+    'latest-tag',
+    latestTag,
   );
+
   setOutput(
     'commits',
-    await getCommits(inputs.workspace, inputs.format, inputs.mode),
+    await getCommits(inputs.workspace, inputs.format, inputs.mode, latestTag),
   );
 };
 

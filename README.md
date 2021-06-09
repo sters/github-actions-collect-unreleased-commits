@@ -1,12 +1,21 @@
 # github-actions-collect-unreleased-commits
 
+This action collects
+
 ## Inputs
 
-|Value|Description|
-|---|---|
-|workspace|Collect git log for this workspace path.|
-|mode|Collect method. Details are below.|
-|format|Message format at each commits. Details are below.|
+|Value    |Default           |Required|Description                                                                                                                  |
+|---------|------------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
+|workspace|                  |true    |Collect git log for this workspace path.                                                                                     |
+|mode     |only-pull-requests|false   |Collect method. Details are below.                                                                                           |
+|format   |%s                |false   |Message format that the same as git log format option. See this [document](https://git-scm.com/docs/git-log#_pretty_formats).|
+
+## Outputs
+
+|Value     |Description                |
+|----------|---------------------------|
+|latest-tag|The latest tag.            |
+|commits   |The unreleased commit list.|
 
 ## Supported `mode`
 
@@ -15,18 +24,3 @@
 |only-pull-requests|Includes only `#xx` style commit messages.|
 |only-merge-commit |Includes only `Merge` commit.             |
 |all-commit        |Includes all commit.                      |
-
-## Supported `format`
-
-`format` supports this syntax like template literals.
-
-```
-${subject}
-```
-
-|Values|Description|
-|---|---|
-|subject|commit message|
-|authorName|commit's author name|
-|hash|commit hash|
-|abbrevHash|shorthand commit hash number|
