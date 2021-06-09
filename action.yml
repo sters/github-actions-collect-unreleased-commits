@@ -1,5 +1,8 @@
 name: 'Collect unreleased commits'
 description: 'Collect unreleased commits from specific git repository log'
+branding:
+  icon: git-commit
+  color: blue
 
 inputs:
   workspace:
