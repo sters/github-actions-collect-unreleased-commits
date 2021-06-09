@@ -19,4 +19,5 @@ jobs:
       - name: Show output
         run: |
           echo "Latest Tag: ${{ steps.log.outputs.latest-tag }}"
+          echo "Unreleased commits:"
           echo "${{ steps.log.outputs.commits }}"

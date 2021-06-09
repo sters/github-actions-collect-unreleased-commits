@@ -1,6 +1,12 @@
 # github-actions-collect-unreleased-commits
 
-This action collects
+This action collects latest tag and non-tagged commits.
+
+For example, this action is useful in case of main branch is as the development-HEAD and latest tag is as the production-HEAD.
+
+This actions supports remind to you about unreleased commits.
+(Not support remind directly. Only collects.)
+
 
 ## Inputs
 
