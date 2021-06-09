@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    name: A job for example usage
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: log
+        uses: ./
+        with:
+          workspace: .
+          mode: all-commit
+
+      - name: Show output
+        run: |
+          echo "Latest Tag: ${{ steps.log.outputs.latest_tag }}"
+          echo "${{ steps.log.outputs.commits }}"
