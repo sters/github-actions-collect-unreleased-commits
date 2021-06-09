@@ -71,8 +71,10 @@ const getLatestTag = async (workspace) => {
 
 const getCommits = async (workspace, format, mode, latestTag) => {
   const cmd = `git`;
-  const range = latestTag === '' ? 'HEAD' : `${latestTag}..HEAD`;
-  const args = ['log', range, `--format={{filter:%B}}${format}//`];
+  const range = latestTag === '' ? '' : `${latestTag}..HEAD`;
+  const args = ['log', range, `--format={{filter:%B}}${format}//`].filter((s) => {
+    return s !== '';
+  });
   const result = await run(cmd, args, workspace);
 
   return result.split('//\n').filter((s) => {
