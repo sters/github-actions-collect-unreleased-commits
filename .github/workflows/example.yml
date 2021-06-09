@@ -16,5 +16,8 @@ jobs:
 
       - name: Show output
         run: |
+          git log --format=%s
+          git log --format:'%D' --decorate-refs=tags
+          echo "---"
           echo "Latest Tag: ${{ steps.log.outputs.latest_tag }}"
           echo "${{ steps.log.outputs.commits }}"
