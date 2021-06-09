@@ -97,15 +97,12 @@ const main = async () => {
   const inputs = parseInputs();
 
   const latestTag = await getLatestTag(inputs.workspace);
-  setOutput(
-    'latest-tag',
-    latestTag,
-  );
+  const commits = await getCommits(inputs.workspace, inputs.format, inputs.mode, latestTag);
+  console.log(latestTag);
+  console.log(commits);
 
-  setOutput(
-    'commits',
-    await getCommits(inputs.workspace, inputs.format, inputs.mode, latestTag),
-  );
+  setOutput('latest-tag', latestTag);
+  setOutput('commits', commits);
 };
 
 try {

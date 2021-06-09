@@ -114,15 +114,12 @@ const main = async () => {
   const inputs = parseInputs();
 
   const latestTag = await getLatestTag(inputs.workspace);
-  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput)(
-    'latest-tag',
-    latestTag,
-  );
+  const commits = await getCommits(inputs.workspace, inputs.format, inputs.mode, latestTag);
+  console.log(latestTag);
+  console.log(commits);
 
-  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput)(
-    'commits',
-    await getCommits(inputs.workspace, inputs.format, inputs.mode, latestTag),
-  );
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput)('latest-tag', latestTag);
+  (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput)('commits', commits);
 };
 
 try {
