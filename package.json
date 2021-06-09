@@ -1,0 +1,27 @@
+{
+  "name": "github-actions-collect-unreleased-commits",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sters/github-actions-collect-unreleased-commits.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sters/github-actions-collect-unreleased-commits/issues"
+  },
+  "homepage": "https://github.com/sters/github-actions-collect-unreleased-commits#readme",
+  "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/github": "^5.0.0",
+    "@vercel/ncc": "^0.28.6",
+    "stream": "^0.0.2",
+    "through2": "^4.0.2"
+  },
+  "type": "module"
+}

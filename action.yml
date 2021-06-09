@@ -1,0 +1,26 @@
+name: 'Collect unreleased commits'
+description: 'Collect unreleased commits from specific git repository log'
+
+inputs:
+  workspace:
+    description: 'Git repository path.'
+    required: true
+    default: ''
+  mode:
+    description: 'Detect unreleased commits mode.'
+    required: false
+    default: 'only-pull-requests'
+  format:
+    description: 'Message format that the same as git log format option.'
+    required: false
+    default: '%s'
+
+outputs:
+  latest-release:
+    description: 'The latest release version.'
+  commits:
+    description: 'The unreleased commit list'
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
