@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/sters/github-actions-collect-unreleased-commits#readme",
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^5.0.0",
     "@vercel/ncc": "^0.28.6",
     "stream": "^0.0.2",
